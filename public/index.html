@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+<title>FrameInGoa — HH Goa 2026 Frame & Builder ID Generator</title>
+<meta name="description" content="Upload a photo, get a branded Hacker House Goa 2026 frame or Builder ID in seconds. Download & share with #FrameInGoa."/>
+<meta property="og:title" content="FrameInGoa — HH Goa 2026 Frame Generator"/>
+<meta property="og:description" content="Upload a photo, get a branded HH Goa graphic in seconds."/>
+<meta property="og:image" content="/assets/sunrise.jpg"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<link rel="icon" href="/assets/favicon.webp"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Imbue:opsz,wght@10..100,400..800&family=Victor+Mono:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/style.css?v=3"/>
+</head>
+<body>
+
+<nav class="site-nav" aria-label="Primary">
+  <a class="nav-mark" href="/" aria-label="FrameInGoa home">
+    <img src="/assets/mark.svg" alt=""/>
+  </a>
+  <div class="nav-links">
+    <a href="#check-hype">CHECK HYPE</a>
+    <a class="nav-apply" href="https://hacker-house-goa-2026.devfolio.co/" target="_blank" rel="noopener">APPLY</a>
+  </div>
+</nav>
+
+<header class="site-hero">
+  <div class="hero-art" aria-hidden="true"></div>
+  <div class="hero-palms" aria-hidden="true">
+    <img class="palm palm-left" src="/assets/palm-left.png" alt=""/>
+    <img class="palm palm-right" src="/assets/palm-right.png" alt=""/>
+  </div>
+  <div class="hero-ambient" aria-hidden="true">
+    <span></span><span></span><span></span><span></span><span></span>
+  </div>
+  <div class="hero-inner">
+    <div class="hero-wordmark" aria-label="Hacker House Goa">
+      <span class="hw-left">HACKER</span>
+      <img class="hero-goa" src="/assets/goa-hindi.png" alt="गोवा"/>
+      <span class="hw-right">HOUSE</span>
+    </div>
+    <div class="hero-meta-row">
+      <span>GOA, INDIA</span>
+      <span class="hero-dot" aria-hidden="true">✦</span>
+      <span>28 – 31 OCT 2026</span>
+      <span class="hero-dot" aria-hidden="true">✦</span>
+      <span>2:47 PM STUDIO</span>
+    </div>
+    <h1 class="hero-title">Frame &amp; Builder&nbsp;ID<br/>Generator</h1>
+    <p class="hero-sub">Drop a photo. Get a branded HH Goa graphic in seconds.<br/>No login. No crop chores. Just ship.</p>
+    <a class="hero-cta" href="#tool">Make your frame ↓</a>
+  </div>
+  <div class="zz zz-yellow" aria-hidden="true"></div>
+</header>
+
+<main class="tool" id="tool">
+
+  <!-- STEP 1 · FORMAT -->
+  <section class="step reveal">
+    <h2 class="step-label"><span>01</span> Pick your format</h2>
+    <div class="format-picker" role="tablist" aria-label="Format">
+      <button class="format-card active" id="fmt-pfp" role="tab" aria-selected="true">
+        <span class="fc-name">PFP Frame</span>
+        <span class="fc-desc">Your photo, wrapped in HH Goa branding. Ready-made X profile picture.</span>
+      </button>
+      <button class="format-card" id="fmt-card" role="tab" aria-selected="false">
+        <span class="fc-name">Builder ID</span>
+        <span class="fc-desc">Event-badge style card: photo, name, stack &amp; your generated builder title.</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- STEP 2 · DETAILS (card only) -->
+  <section class="step" id="fields-step" data-step="badge" hidden>
+    <h2 class="step-label"><span>02</span> Badge details</h2>
+    <div class="fields">
+      <label class="field">
+        <span>Your name</span>
+        <input type="text" id="in-name" maxlength="24" placeholder="ADA LOVELACE" autocomplete="name"/>
+      </label>
+      <label class="field">
+        <span>Stack / role</span>
+        <input type="text" id="in-stack" maxlength="30" placeholder="FULL-STACK · RUST · REACT"/>
+      </label>
+      <div class="field">
+        <span>Builder title</span>
+        <div class="title-row">
+          <output id="out-title">SANDCASTLE ARCHITECT</output>
+          <button type="button" id="btn-shuffle" class="btn-ghost" title="Shuffle title">↻</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STEP 2 (PFP) / STEP 3 (CARD) · PHOTO -->
+  <section class="step reveal" data-step="photo">
+    <h2 class="step-label"><span id="photo-num">02</span> Add your photo</h2>
+    <label class="dropzone" id="dropzone">
+      <input type="file" id="file-input" accept="image/*,.heic,.heif" hidden/>
+      <span class="dz-plus">+</span>
+      <span class="dz-text">Tap to upload<br/><em>JPG · PNG · HEIC — portrait, landscape, whatever</em></span>
+    </label>
+    <p class="dz-loading" id="dz-loading" hidden>Reading photo…</p>
+  </section>
+
+  <!-- RESULT -->
+  <section class="step" id="result-step" hidden>
+    <h2 class="step-label"><span id="result-num">03</span> Your frame — done.</h2>
+    <div class="preview-wrap">
+      <canvas id="preview" width="560" height="560" aria-label="Generated graphic preview"></canvas>
+    </div>
+    <p class="hint" id="editor-hint">Drag the photo to reposition · pinch or slider to zoom</p>
+    <div class="zoom-row">
+      <span>−</span><input type="range" id="zoom" min="100" max="300" value="100"/><span>+</span>
+    </div>
+    <div class="actions">
+      <button class="btn btn-yellow" id="btn-download">↓ Download PNG</button>
+      <button class="btn btn-dark" id="btn-sharex">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M18.9 1.15h3.68l-8.04 9.19L24 22.85h-7.41l-5.8-7.58-6.64 7.58H.47l8.6-9.83L0 1.15h7.6l5.24 6.93 6.06-6.93Zm-1.29 19.5h2.04L6.49 3.24H4.3l13.31 17.41Z"/></svg>
+        Share to X
+      </button>
+      <button class="btn btn-ghost-dark" id="btn-native" hidden>Share…</button>
+    </div>
+    <p class="hint" id="share-status"></p>
+    <button class="link-reset" id="btn-reset">← start over with a new photo</button>
+  </section>
+</main>
+
+<section class="reel-section" id="check-hype">
+  <div class="reel-inner reveal">
+    <p class="reel-kicker">Inside the room</p>
+    <h2 class="reel-title">4 days. one rhythm.<br/>everything intentional.</h2>
+    <div class="reel-stats">
+      <div class="stat">
+        <span class="stat-num" data-target="4">0</span>
+        <span class="stat-label">Days of build</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num" data-target="72">0</span>
+        <span class="stat-label">Hours of flow</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num" data-target="1">0</span>
+        <span class="stat-label">Sunset demo</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="agenda-section" aria-label="Agenda">
+  <div class="agenda-inner reveal">
+    <p class="agenda-kicker">The arc</p>
+    <h2 class="agenda-title">From genesis to ship</h2>
+    <div class="agenda-days">
+      <article class="day-card">
+        <span class="day-no">01</span>
+        <h3>Genesis Day</h3>
+        <p>where it all begins</p>
+      </article>
+      <article class="day-card">
+        <span class="day-no">02</span>
+        <h3>Day of Triangle</h3>
+        <p>problem · solution · market</p>
+      </article>
+      <article class="day-card">
+        <span class="day-no">03</span>
+        <h3>Build Day</h3>
+        <p>heads down. ship or ship.</p>
+      </article>
+      <article class="day-card">
+        <span class="day-no">04</span>
+        <h3>Launch Day</h3>
+        <p>the world watches</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="faq-section" aria-label="Frequently asked questions">
+  <div class="faq-inner reveal">
+    <h2 class="faq-title">FAQs</h2>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>Who is this frame tool for?</summary>
+        <p>Anyone heading to Hacker House Goa 2026 — hackers, designers, founders, mentors, or just fans who want a branded profile picture or badge.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Is it free to use?</summary>
+        <p>Yes. Generate, download, and share as many frames or builder IDs as you want. No account required.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Can I use this if I am not attending?</summary>
+        <p>Sure — spread the vibe. Just keep the #FrameInGoa tag honest and point people to hhgoa.com for tickets.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What image formats work?</summary>
+        <p>JPG, PNG, and HEIC/HEIF are supported. Portrait or landscape photos both work; the tool cover-fits them automatically.</p>
+      </details>
+      <details class="faq-item">
+        <summary>How do I share with the preview image?</summary>
+        <p>Hit “Share to X”. The tool uploads your PNG and returns a link that shows your frame as the social-card preview.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="zz zz-yellow" aria-hidden="true"></div>
+  <div class="footer-art" aria-hidden="true"></div>
+  <div class="footer-inner">
+    <img class="f-247" src="/assets/logo-247.png" alt="2:47 PM Studio"/>
+    <p>LESS NOISE. MORE SIGNAL.</p>
+    <p class="f-small">Built for <a href="https://hhgoa.com" target="_blank" rel="noopener">hhgoa.com</a> · #FrameInGoa · © 2026 HH-GOA</p>
+  </div>
+</footer>
+
+<script src="/app.js" defer></script>
+</body>
+</html>
