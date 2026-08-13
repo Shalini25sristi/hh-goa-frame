@@ -2,7 +2,10 @@
   "name": "hh-goa-frame",
   "version": "1.0.0",
   "description": "HH Goa 2026 frame & builder ID generator — #FrameInGoa",
-  "main": "index.js",
+  "main": "server.js",
+  "engines": {
+    "node": ">=18.x"
+  },
   "scripts": {
     "test": "node test/e2e.js",
     "start": "node server.js"
@@ -11,7 +14,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^5.2.1",
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
     "playwright": "^1.62.1"
   }
 }

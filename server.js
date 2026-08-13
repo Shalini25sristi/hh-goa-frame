@@ -87,4 +87,9 @@ app.get('/s/:id', (req, res) => {
 </html>`);
 });
 
-app.listen(PORT, () => console.log(`HH Goa frame tool → http://localhost:${PORT}`));
+// Start server locally; export app for serverless platforms like Vercel.
+if (require.main === module) {
+  app.listen(PORT, () => console.log(`HH Goa frame tool → http://localhost:${PORT}`));
+}
+
+module.exports = app;
