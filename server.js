@@ -8,10 +8,17 @@ const crypto = require('crypto');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const DATA_DIR = path.join(__dirname, 'data');
+// Vercel serverless functions have a read-only filesystem except /tmp.
+const DATA_DIR = process.env.VERCEL
+  ? path.join('/tmp', 'data')
+  : path.join(__dirname, 'data');
 const MAX_BYTES = 12 * 1024 * 1024; // 12 MB rendered PNG cap
 
-fs.mkdirSync(DATA_DIR, { recursive: true });
+try {
+  fs.mkdirSync(DATA_DIR, { recursive: true });
+} catch (err) {
+  console.error('Could not create data directory:', err.message);
+}
 
 // Trust proxy headers (ngrok / cloudflare / reverse proxies) so absolute
 // OG URLs are built with the public host + protocol.
