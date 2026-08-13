@@ -4,6 +4,8 @@ A lightweight, client-side web tool for attendees of **Hacker House Goa 2026** t
 
 Live feel: **#FrameInGoa** — green, yellow, palms, and the Hindi गोवा stamp.
 
+**Live site:** https://hh-goa-frame-six.vercel.app
+
 ---
 
 ## Features
