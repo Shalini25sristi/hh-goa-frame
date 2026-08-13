@@ -51,7 +51,7 @@
     </div>
     <h1 class="hero-title">Frame &amp; Builder&nbsp;ID<br/>Generator</h1>
     <p class="hero-sub">Drop a photo. Get a branded HH Goa graphic in seconds.<br/>No login. No crop chores. Just ship.</p>
-    <a class="hero-cta" href="#tool">Make your frame ↓</a>
+    <a class="hero-cta" href="#step-format">Make your frame ↓</a>
   </div>
   <div class="zz zz-yellow" aria-hidden="true"></div>
 </header>
@@ -59,10 +59,10 @@
 <main class="tool" id="tool">
 
   <!-- STEP 1 · FORMAT -->
-  <section class="step reveal">
+  <section class="step reveal" id="step-format">
     <h2 class="step-label"><span>01</span> Pick your format</h2>
     <div class="format-picker" role="tablist" aria-label="Format">
-      <button class="format-card active" id="fmt-pfp" role="tab" aria-selected="true">
+      <button class="format-card" id="fmt-pfp" role="tab" aria-selected="false">
         <span class="fc-name">PFP Frame</span>
         <span class="fc-desc">Your photo, wrapped in HH Goa branding. Ready-made X profile picture.</span>
       </button>
@@ -71,6 +71,7 @@
         <span class="fc-desc">Event-badge style card: photo, name, stack &amp; your generated builder title.</span>
       </button>
     </div>
+    <p class="format-hint" id="format-hint">Pick a format above to continue ↗</p>
   </section>
 
   <!-- STEP 2 · DETAILS (card only) -->
@@ -96,7 +97,7 @@
   </section>
 
   <!-- STEP 2 (PFP) / STEP 3 (CARD) · PHOTO -->
-  <section class="step reveal" data-step="photo">
+  <section class="step reveal" data-step="photo" id="photo-step" hidden>
     <h2 class="step-label"><span id="photo-num">02</span> Add your photo</h2>
     <label class="dropzone" id="dropzone">
       <input type="file" id="file-input" accept="image/*,.heic,.heif" hidden/>

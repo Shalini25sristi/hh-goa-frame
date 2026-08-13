@@ -122,6 +122,8 @@ img{user-select:none;-webkit-user-drag:none}
 .format-card.active .fc-name{color:var(--green)}
 .format-card.active .fc-desc{color:var(--green-ink);opacity:.9}
 .format-card:focus-visible{outline:3px solid var(--white);outline-offset:2px}
+.format-hint{margin-top:14px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--yellow);text-align:center;opacity:.85;transition:opacity .2s ease}
+.format-hint.hidden{opacity:0}
 
 /* dropzone */
 .dropzone{display:flex;align-items:center;gap:16px;border:2.5px dashed rgba(254,225,1,.6);

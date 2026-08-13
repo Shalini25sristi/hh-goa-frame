@@ -22,7 +22,7 @@ const BUILDER_TITLES = [
 
 /* ── state ───────────────────────────────────────────────────── */
 const state = {
-  format: 'pfp',          // 'pfp' | 'card'
+  format: null,           // 'pfp' | 'card' | null
   photo: null,            // ImageBitmap | HTMLImageElement
   ox: 0, oy: 0,           // photo offset in output px
   zoom: 100,              // % of cover scale
@@ -39,7 +39,7 @@ const els = {
   fmtPfp: $('fmt-pfp'), fmtCard: $('fmt-card'),
   fileInput: $('file-input'), dropzone: $('dropzone'), dzLoading: $('dz-loading'),
   fieldsStep: $('fields-step'), resultStep: $('result-step'), resultNum: $('result-num'),
-  photoNum: $('photo-num'),
+  photoStep: $('photo-step'), photoNum: $('photo-num'), formatHint: $('format-hint'),
   inName: $('in-name'), inStack: $('in-stack'), outTitle: $('out-title'),
   btnShuffle: $('btn-shuffle'), zoom: $('zoom'), editorHint: $('editor-hint'),
   btnDownload: $('btn-download'), btnShareX: $('btn-sharex'), btnNative: $('btn-native'),
@@ -445,16 +445,18 @@ function setFormat(f) {
   els.fmtCard.classList.toggle('active', f === 'card');
   els.fmtPfp.setAttribute('aria-selected', f === 'pfp');
   els.fmtCard.setAttribute('aria-selected', f === 'card');
+  els.formatHint.classList.toggle('hidden', f !== null);
   els.fieldsStep.hidden = f !== 'card';
+  els.photoStep.hidden = f === null;
   els.toolWrap.classList.toggle('card-flow', f === 'card');
   if (f === 'card') {
     els.photoNum.textContent = '03';
     els.resultNum.textContent = '04';
-  } else {
+  } else if (f === 'pfp') {
     els.photoNum.textContent = '02';
     els.resultNum.textContent = '03';
   }
-  if (state.photo) render();
+  if (state.photo && f) render();
 }
 
 function refreshTitle() { els.outTitle.textContent = builderTitle(); }
@@ -496,7 +498,7 @@ if (navigator.canShare) {
 }
 
 bindEditor();
-setFormat('pfp');
+setFormat(null);
 refreshTitle();
 
 /* ── scroll reveals & number counters ────────────────────────── */
